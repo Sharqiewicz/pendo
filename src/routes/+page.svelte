@@ -1,2 +1,13 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+	import { getContext } from 'svelte';
+	import ChainSwitch from '../lib/components/chain-switch.svelte';
+
+	// Retrieve the store from the context
+	const chainStore = getContext('chain');
+
+	// Directly subscribe using the $ syntax for automatic reactivity
+	$: chain = $chainStore;
+</script>
+
+<h1>Current chain: {chain}</h1>
+<ChainSwitch />
